@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Games!</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+    Favourite Games Suvway
+      </h1>
+      <p class="subtitle">
+        choose your favourite <strong>games</strong>!
+      </p>
+      <br>
+    </div>
+    <div class="columns">
+      <form class="column is-one-third" method="POST" action="/form">
+
+        <div class="field">
+            <label class="label">Player's Name</label>
+            <div class="control">
+              <input class="input is-success" type="text" name="pName" >
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Age</label>
+            <div class="control">
+              <input class="input is-success" type="number" placeholder="Age"  required name="age">
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+              </span>
+            </div>
+          </div>
+
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input is-danger" type="email" placeholder="Email input" value="hello@" name="Email">
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-exclamation-triangle"></i>
+            </span>
+          </div>
+          <p class="help is-danger">This email is invalid</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Platform</label>
+            <div class="control">
+              <div class="select">
+                <select onchange="platformSelected(this.value)" name="platform">
+                  <option value="">Select the platform you play.</option>
+                  <option value="PC">PC</option>
+                  <option value="PS4">PS4</option>
+                </select>
+              </div>
+            </div>
+          </div>
+  
+          <div class="field">
+            <label class="label">Games</label>
+            <div class="control">
+              <div class="select" >
+                <select id="Games" disabled name="Games">
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Region</label>
+            <div class="control">
+              <div class="select">
+                <select name="Region">
+                  <option value="" selected="selected">Select the region you come from.</option>
+                  <option value="Asia">Asia</option>
+                  <option value="Europe">Europe</option>
+                  <option value="North America">North America</option>
+                  <option value="South America">South America</option>
+                  <option value="Africa">Africa</option>
+                  <option value="Oceania">Oceania</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        <div class="field">
+          <label class="label">Evaluation</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Textarea" rows="2" name="Evaluation"></textarea>
+          </div>
+        </div>
+        
+
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit">Submit</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light" type="reset">Cancel</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+
+
+  <script>
+    var pc = ["League of legend", "CSGO", "ddt", "Overwatch", "DNF", "Battle Block Theater"];
+    var ps4 = ["Zero down", "Red Dead Redemption", "Detroit Becomes Human", "Devil May Cry 5", "Spiderman Marvel", "Sekiro：Shadows Die Twice"];
+    function platformSelected(platform) {
+    //   alert(platform);
+
+      var gamesElem = document.getElementById("Games");
+      gamesElem.options.length = 0;
+      if (platform == "PC") {
+
+        pc.forEach(function (item) {
+          var option = document.createElement("option");
+          option.text = item;
+          option.value = item;
+          gamesElem.add(option);
+        });
+
+        gamesElem.disabled = false;
+
+      } else if (platform == "PS4") {
+
+        ps4.forEach(function (item) {
+          var option = document.createElement("option");
+          option.text = item;
+          option.value = item;
+          gamesElem.add(option);
+        });
+
+        gamesElem.disabled = false;
+
+      } else {
+
+        gamesElem.disabled = true;
+      }
+    }
+
+  </script>
+</body>
+
+</html>
